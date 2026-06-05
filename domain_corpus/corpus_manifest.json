@@ -1,0 +1,168 @@
+{
+  "domain": "Medical & Clinical Literature",
+  "model_id_for_later_parts": "microsoft/biogpt-large",
+  "cleaning_parameters": {
+    "minimum_document_characters": 5000,
+    "english_confidence_threshold": 0.85,
+    "document_duplicate_method": "5-word shingle Jaccard similarity",
+    "document_duplicate_jaccard_threshold": 0.85,
+    "page_duplicate_method": "SHA-256 hash of normalized page text",
+    "language_detection_library": "langdetect",
+    "pdf_text_extraction_library": "PyMuPDF / fitz"
+  },
+  "stage_stats": [
+    {
+      "stage": "0. Raw PDFs collected",
+      "source_documents": 10,
+      "txt_files": 0,
+      "pages": 37,
+      "characters": 0,
+      "words": 0,
+      "note": "Original PDFs placed in raw_pdfs/"
+    },
+    {
+      "stage": "1. After text extraction",
+      "source_documents": 10,
+      "txt_files": 10,
+      "pages": 37,
+      "characters": 143219,
+      "words": 22923,
+      "note": "Readable page text extracted with PyMuPDF"
+    },
+    {
+      "stage": "2. After English language filter",
+      "source_documents": 10,
+      "txt_files": 10,
+      "pages": 37,
+      "characters": 143219,
+      "words": 22923,
+      "note": "Kept lang=en with confidence >= 0.85"
+    },
+    {
+      "stage": "3. After page/section deduplication",
+      "source_documents": 10,
+      "txt_files": 10,
+      "pages": 37,
+      "characters": 143219,
+      "words": 22923,
+      "note": "Removed repeated headers/footers and exact duplicate page hashes"
+    },
+    {
+      "stage": "4. After length filter",
+      "source_documents": 10,
+      "txt_files": 10,
+      "pages": 37,
+      "characters": 143219,
+      "words": 22923,
+      "note": "Kept documents with >= 5000 characters"
+    },
+    {
+      "stage": "5. After near-duplicate document filter",
+      "source_documents": 10,
+      "txt_files": 10,
+      "pages": 37,
+      "characters": 143219,
+      "words": 22923,
+      "note": "Removed document pairs with Jaccard similarity >= 0.85"
+    }
+  ],
+  "final_files": [
+    {
+      "txt_file": "01_01_paracetamol_500mg_tablets.txt",
+      "source_pdf": "01_paracetamol_500mg_tablets.pdf",
+      "pages": 1,
+      "characters": 8949,
+      "words": 1441,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "02_02_ibuprofen_400mg_tablets.txt",
+      "source_pdf": "02_ibuprofen_400mg_tablets.pdf",
+      "pages": 2,
+      "characters": 23474,
+      "words": 3652,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "03_03_amoxicillin_500mg_capsules.txt",
+      "source_pdf": "03_amoxicillin_500mg_capsules.pdf",
+      "pages": 1,
+      "characters": 14669,
+      "words": 2432,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "04_04_metformin_500mg_tablets.txt",
+      "source_pdf": "04_metformin_500mg_tablets.pdf",
+      "pages": 8,
+      "characters": 18577,
+      "words": 2987,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "05_05_salbutamol_inhaler.txt",
+      "source_pdf": "05_salbutamol_inhaler.pdf",
+      "pages": 5,
+      "characters": 16102,
+      "words": 2617,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "06_06_cetirizine_10mg_tablets.txt",
+      "source_pdf": "06_cetirizine_10mg_tablets.pdf",
+      "pages": 2,
+      "characters": 12086,
+      "words": 1822,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "07_07_loratadine_10mg_tablets.txt",
+      "source_pdf": "07_loratadine_10mg_tablets.pdf",
+      "pages": 5,
+      "characters": 9344,
+      "words": 1521,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "08_08_aspirin_75mg_tablets.txt",
+      "source_pdf": "08_aspirin_75mg_tablets.pdf",
+      "pages": 1,
+      "characters": 14822,
+      "words": 2393,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "09_09_loperamide_2mg_capsules.txt",
+      "source_pdf": "09_loperamide_2mg_capsules.pdf",
+      "pages": 6,
+      "characters": 13424,
+      "words": 2179,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    },
+    {
+      "txt_file": "10_10_ferrous_sulfate_200mg_tablets.txt",
+      "source_pdf": "10_ferrous_sulfate_200mg_tablets.pdf",
+      "pages": 6,
+      "characters": 11772,
+      "words": 1879,
+      "detected_language": "en",
+      "language_confidence": 1.0
+    }
+  ],
+  "drop_logs": {
+    "unreadable_or_empty_pdfs": [],
+    "language_filter": [],
+    "page_or_section_deduplication": [],
+    "length_filter": [],
+    "document_near_duplicate_filter": []
+  }
+}
